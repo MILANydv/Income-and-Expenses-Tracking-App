@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.shortcuts import render, redirect
 from .models import Source, UserIncome
 from django.core.paginator import Paginator
@@ -108,3 +109,33 @@ def delete_income(request, id):
     income.delete()
     messages.success(request, 'record removed')
     return redirect('income')
+
+def income_source_summary(request):
+    todays_date = datetime.date.today()
+    six_months_ago = todays_date - datetime.timedelta(days=30 * 6)
+    income = UserIncome.objects.filter(owner=request.user,
+                                      date__gte=six_months_ago, date__lte=todays_date)
+    finalrep = {}
+
+    def get_scource(expense):
+        return expense.scource
+
+    scource_list = list(set(map(get_scource, income)))
+
+    def get_expense_scource_amount(scource):
+        amount = 0
+        filtered_by_scource = income.filter(scource=scource)
+
+        for item in filtered_by_scource:
+            amount += item.amount
+        return amount
+
+    for x in income:
+        for y in scource_list:
+            finalrep[y] = get_expense_scource_amount(y)
+
+    return JsonResponse({'expense_scource_data': finalrep}, safe=False)
+
+
+def stats_view_income(request):
+    return render(request, 'income/stats.html')

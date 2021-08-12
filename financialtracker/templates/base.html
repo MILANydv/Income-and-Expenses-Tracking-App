@@ -21,27 +21,28 @@
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
       <a class="navbar-brand col-sm-3 col-md-2 mr-0 px-3" href="#">TrulyExpenses</a>
 
-      <ul
+      <div
         class="navbar-nav px-3"
-        style="display: flex; flex-direction: row; align-items: center;"
+        style="display: flex; flex-direction: row; align-items: center ;"
       >
-        <li class="nav-item text-nowrap">
-          <span class="nav-link" href="">
-            ({{request.user.username}})
-          </span>
-        </li>
+        <div class="nav-item text-nowrap text-uppercase px-3">
+          <div class="nav-link" href="#">
+            <h6><strong>Welcome, {{request.user.username}}</strong></h6>
+            
+          </div>
+        </div>
 
-        <li class="nav-item text-nowrap mt-3 ml-2">
+        <div class="nav-item  text-nowrap  ml-5">
           <form action="{% url  'logout' %}" method="POST">
             {% csrf_token %}
             <input
-              class="text text-capitalize"
+              class="text text-capitalize shadow text-light bg-dark"
               type="submit"
               value="Sign out"
             />
           </form>
-        </li>
-      </ul>
+        </div>
+      </div>
     </nav>
 
     <div class="container-fluid">
