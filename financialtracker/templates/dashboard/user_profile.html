@@ -1,0 +1,31 @@
+{% extends 'base.html'%} {% load static %} {% block content %}
+ THIS IS Account
+
+ <div class="card">
+    <div class="card-body">
+      <form action="{% url 'expense-edit' expense.id %}" method="post">
+        {% include 'partials/_messages.html'%} {% csrf_token %}
+        <div class="form-group">
+          <label for="">Amount</label>
+          <input
+            type="text"
+            class="form-control form-control-sm"
+            name="amount"
+            value="{{values.amount}}"
+          />
+        </div>
+        
+        
+        
+
+        <input
+          type="submit"
+          value="Save"
+          class="btn btn-primary btn-primary-sm"
+        />
+      </form>
+    </div>
+  </div>
+</div>
+
+ {% endblock %}

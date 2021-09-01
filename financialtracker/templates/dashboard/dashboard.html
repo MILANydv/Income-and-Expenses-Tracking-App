@@ -1,0 +1,31 @@
+{% extends 'base.html'%} {% load static %} {% block content %}
+ THIS IS DASHBOARD
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-10">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <div class="text">Income VS Expenses </div>
+          </li>
+          
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="col-md-12">
+      <canvas id="Chart" width="850" height="300"></canvas>
+    </div>
+    <div class="col-md-4 m-20">
+      <div class="container">
+        Recent Transactions
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'js/dashboard.js' %}"></script>
+
+{% endblock%}

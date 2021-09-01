@@ -1,13 +1,15 @@
-from datetime import datetime
-from django.shortcuts import render, redirect
-from .models import Source, UserIncome
-from django.core.paginator import Paginator
-from userpreferences.models import UserPreference
+import json
+
+# Create your views here.
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-import json
+from django.core.paginator import Paginator
 from django.http import JsonResponse
-# Create your views here.
+from django.shortcuts import render, redirect
+
+from .models import Source, UserIncome
+import datetime
+from userpreferences.models import UserPreference
 
 
 def search_income(request):
@@ -112,30 +114,63 @@ def delete_income(request, id):
 
 def income_source_summary(request):
     todays_date = datetime.date.today()
-    six_months_ago = todays_date - datetime.timedelta(days=30 * 6)
-    income = UserIncome.objects.filter(owner=request.user,
-                                      date__gte=six_months_ago, date__lte=todays_date)
+    one_year_ago = todays_date - datetime.timedelta(days=30 * 12)
+    income = UserIncome.objects.filter(owner=request.user,date__gte=one_year_ago, date__lte=todays_date)
+
     finalrep = {}
 
-    def get_scource(expense):
-        return expense.scource
+    def get_source(income):
+       return income.source
+      
 
-    scource_list = list(set(map(get_scource, income)))
+    source_list = list(set(map(get_source, income)))
 
-    def get_expense_scource_amount(scource):
+    def get_income_source_amount(source):
         amount = 0
-        filtered_by_scource = income.filter(scource=scource)
+        filtered_by_source = income.filter(source=source)
 
-        for item in filtered_by_scource:
+        for item in filtered_by_source:
             amount += item.amount
         return amount
 
     for x in income:
-        for y in scource_list:
-            finalrep[y] = get_expense_scource_amount(y)
+        for y in source_list:
+            finalrep[y] = get_income_source_amount(y)
 
-    return JsonResponse({'expense_scource_data': finalrep}, safe=False)
+    return JsonResponse({'income_source_data': finalrep}, safe=False)
+
+    #----------- For Dashboard -------------------------
+
+def income_date_summary(request):
+    todays_date = datetime.date.today()
+    one_year_ago = todays_date - datetime.timedelta(days=30 * 12)
+    income = UserIncome.objects.filter(owner=request.user,date__gte=one_year_ago, date__lte=todays_date)
+
+    finalrep = {}
+
+    def get_date(income):
+       return income.date
+      
+
+    date_list = list(set(map(get_date, income)))
+
+    def get_income_date_amount(date):
+        amount = 0
+        filtered_by_date = income.filter(date=date)
+
+        for item in filtered_by_date:
+            amount += item.amount
+        return amount
+
+    for x in income:
+        for y in date_list:
+            finalrep[str(y)] = get_income_date_amount(y)
+
+    return JsonResponse({'income_date_data': finalrep}, safe=False)
 
 
 def stats_view_income(request):
     return render(request, 'income/stats.html')
+
+
+

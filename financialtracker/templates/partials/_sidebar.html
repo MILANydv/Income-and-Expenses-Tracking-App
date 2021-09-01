@@ -3,10 +3,7 @@
   <div class="sidebar-stickey">
     <ul class="nav flex-column">
       <li class="nav-item">
-        <a class="nav-link active" href="#">
-          <span data-feather="home"></span>
-          Dashboard <span class="sr-only">(current)</span>
-        </a>
+        <a class="nav-link" href="{% url 'dashboard' %}"> Dashboard </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'expenses' %}"> Expenses </a>
@@ -39,7 +36,9 @@
     </h6>
     <ul class="nav flex-column mb-2">
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'stats-expense'%}"> Expenses Summary </a>
+        <a class="nav-link" href="{% url 'stats-expense'%}">
+          Expenses Summary
+        </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'stats-income'%}">
@@ -75,57 +74,55 @@
         <a class="nav-link" href="{% url 'preferences' %}"> General </a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="{% url 'profile' %}">
+          <span data-feather="file-text"></span>
+          Account
+        </a>
+      </li>
+      <li class="nav-item invisible">
         <a class="nav-link" href="#">
           <span data-feather="file-text"></span>
           Account
         </a>
       </li>
-      <li class="nav-item  invisible ">
+      <li class="nav-item invisible">
         <a class="nav-link" href="#">
           <span data-feather="file-text"></span>
           Account
         </a>
       </li>
-      <li class="nav-item  invisible">
+      <li class="nav-item invisible">
         <a class="nav-link" href="#">
           <span data-feather="file-text"></span>
           Account
         </a>
       </li>
-      <li class="nav-item  invisible">
+      <li class="nav-item invisible">
         <a class="nav-link" href="#">
           <span data-feather="file-text"></span>
           Account
         </a>
       </li>
-      <li class="nav-item  invisible">
+      <li class="nav-item invisible">
         <a class="nav-link" href="#">
           <span data-feather="file-text"></span>
           Account
         </a>
       </li>
-      <li class="nav-item  invisible">
+      <li class="nav-item invisible">
         <a class="nav-link" href="#">
           <span data-feather="file-text"></span>
           Account
         </a>
       </li>
-      <li class="nav-item  invisible">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text"></span>
-          Account
-        </a>
-      </li>
-      
+
       <li class="nav-item">
         <a class="nav-link" href="#">
           <span data-feather="file-text"></span>
-          Copyright ©2021 All rights reserved | Made with Love  by <strong>MILAN</strong> 
+          Copyright ©2021 All rights reserved | Made with Love by
+          <strong>MILAN</strong>
         </a>
       </li>
-      
-      
-      
     </ul>
   </div>
 </nav>

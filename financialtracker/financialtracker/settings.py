@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'authentication',
     'userincome',
     'userpreferences'
+    
 ]
 
 MIDDLEWARE = [
@@ -131,6 +132,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "financialtracker/static")
 ]
+
+
 
 
 # django_heroku.settings(locals())

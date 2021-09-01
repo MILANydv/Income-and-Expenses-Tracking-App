@@ -55,6 +55,10 @@ class UsernameValidation(View):
 
 
 class RegistrationView(View):
+
+
+
+
     def get(self, request):
         return render(request, 'authentication/register.html')
 
@@ -166,3 +170,14 @@ class LogoutView(View):
         auth.logout(request)
         messages.success(request, 'You have been logged out')
         return redirect('login')
+
+
+def user_profile(request):
+    user = User.objects.get(id=request.user.id)
+    
+
+    context={
+        "user": user,
+        
+    }
+    return render(request, 'dashboard/user_profile.html', context)
