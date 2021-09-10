@@ -173,4 +173,75 @@ def stats_view_income(request):
     return render(request, 'income/stats.html')
 
 
+# REPORTS
+def exportIncomeCsv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename=Income ' + \
+        str(datetime.datetime.now()) + '.csv'
+    writer = csv.writer(response)
+    writer.writerow(['Source', 'Description', 'Amount', 'Date'])
+
+    incomes = Income.objects.filter(owner=request.user)
+
+    for income in incomes:
+        writer.writerow([income.source, income.description,
+                         income.amount, income.date])
+
+    return response
+
+
+def exportIncomeExcel(request):
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename=Income ' + \
+        str(datetime.datetime.now()) + '.xlsx'
+
+    workbook = xlwt.Workbook(encoding='utf-8')
+    worksheet = workbook.add_sheet('Income')
+    row_number = 0
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+
+    columns = ['Source', 'Description', 'Amount', 'Date']
+
+    for col_num in range(len(columns)):
+        worksheet.write(row_number, col_num, columns[col_num], font_style)
+
+    font_style = xlwt.XFStyle()
+
+    rows = Income.objects.filter(owner=request.user).values_list(
+        'source', 'description', 'amount', 'date')
+
+    for row in rows:
+        row_number += 1
+        for col_num in range(len(row)):
+            worksheet.write(row_number, col_num, str(row[col_num]), font_style)
+
+    workbook.save(response)
+
+    return response
+
+
+def exportIncomePdf(request):
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'inline; attachment; filename=Income ' + \
+        str(datetime.datetime.now()) + '.pdf'
+
+    response['Content-Transfer-Encoding'] = 'binary'
+
+    incomes = Income.objects.filter(owner=request.user)
+    sum = incomes.aggregate(Sum('amount'))
+
+    html_string = render_to_string(
+        'income/pdf_printout.html', {'incomes': incomes, 'total': sum['amount__sum']})
+
+    html = HTML(string=html_string)
+
+    result = html.write_pdf()
+
+    with tempfile.NamedTemporaryFile(delete=True) as output:
+        output.write(result)
+        output.flush()
+        output = open(output.name, 'rb')
+        response.write(output.read())
+    return response
 

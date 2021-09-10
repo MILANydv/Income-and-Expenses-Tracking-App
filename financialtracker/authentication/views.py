@@ -1,11 +1,9 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.views import View
-import json
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 import json
-from django.http import JsonResponse
-from django.contrib.auth.models import User
 from validate_email import validate_email
 from django.contrib import messages
 from django.core.mail import EmailMessage
@@ -47,6 +45,11 @@ class UsernameValidation(View):
 
         return JsonResponse({'username_valid': True})
 
+#############################   ----------- ADDED FROM NEXT------------------------
+
+def resetPassword(request):
+    email = request.POST.get('email')
+    return render(request, 'accounts/password_reset_form.html')
 
 
 
@@ -172,12 +175,4 @@ class LogoutView(View):
         return redirect('login')
 
 
-def user_profile(request):
-    user = User.objects.get(id=request.user.id)
-    
 
-    context={
-        "user": user,
-        
-    }
-    return render(request, 'dashboard/user_profile.html', context)

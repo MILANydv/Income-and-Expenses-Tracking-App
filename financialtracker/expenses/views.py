@@ -183,3 +183,61 @@ def expenses_date_summary(request):
 
 def stats_view_expense(request):
     return render(request, 'expenses/stats.html')
+
+
+#######################_----------------------------- ADDED FROM NEXT ---------------------------
+
+def exportExpenseExcel(request):
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename=Expenses ' + \
+        str(datetime.datetime.now()) + '.xlsx'
+
+    workbook = xlwt.Workbook(encoding='utf-8')
+    worksheet = workbook.add_sheet('Expenses')
+    row_number = 0
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+
+    columns = ['Category', 'Description', 'Amount', 'Date']
+
+    for col_num in range(len(columns)):
+        worksheet.write(row_number, col_num, columns[col_num], font_style)
+
+    font_style = xlwt.XFStyle()
+
+    rows = Expense.objects.filter(owner=request.user).values_list(
+        'category', 'description', 'amount', 'date')
+
+    for row in rows:
+        row_number += 1
+        for col_num in range(len(row)):
+            worksheet.write(row_number, col_num, str(row[col_num]), font_style)
+
+    workbook.save(response)
+
+    return response
+
+
+def exportExpensePdf(request):
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'inline; attachment; filename=Expenses ' + \
+        str(datetime.datetime.now()) + '.pdf'
+
+    response['Content-Transfer-Encoding'] = 'binary'
+
+    expenses = Expense.objects.filter(owner=request.user)
+    sum = expenses.aggregate(Sum('amount'))
+
+    html_string = render_to_string(
+        'expenses/pdf_printout.html', {'expenses': expenses, 'total': sum['amount__sum']})
+
+    html = HTML(string=html_string)
+
+    result = html.write_pdf()
+
+    with tempfile.NamedTemporaryFile(delete=True) as output:
+        output.write(result)
+        output.flush()
+        output = open(output.name, 'rb')
+        response.write(output.read())
+    return response
