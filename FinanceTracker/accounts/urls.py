@@ -1,3 +1,4 @@
+from django.conf.urls import include
 from django.urls import path
 from .views import *
 from django.views.decorators.csrf import csrf_exempt
@@ -8,6 +9,7 @@ urlpatterns = [
     path('login/', LoginView.as_view(), name="login"),
     path('logout/', userLogout, name="logout"),
 
+    path('login/expense/', include('expenses.urls')),
 
     path('validate-username', csrf_exempt(UsernameValidation.as_view()),
          name="validate-username"),

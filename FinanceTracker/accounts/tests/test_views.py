@@ -1,20 +1,30 @@
+from django.contrib.auth import get_user_model
 from django.test import TestCase
-from django.urls import reverse
-
 # Create your tests here.
 
-class ViewsTestCase(TestCase):
-    def test_index_loads_properly(self):
-        """The index page loads properly"""
-        response = self.client.get('your_server_ip:8000')
-        self.assertEqual(response.status_code, 404)
+class CreateUserTests(TestCase):
+    def test_create_user(self):
+        User = get_user_model()
+        user = User.objects.create_user(
+        username='will',
+        email='will@email.com',
+        password='testpass123'
+        )
+        self.assertEqual(user.username, 'will')
+        self.assertEqual(user.email, 'will@email.com')
+        self.assertTrue(user.is_active)
+        self.assertFalse(user.is_staff)
+        self.assertFalse(user.is_superuser)
 
-    def test_login_loads_properly(self):
-        """The login page loads properly"""
-        response = self.client.get('your_server_ip:8000/auth/login')
-        self.assertEqual(response.status_code, 404)
-
-    def test_register_loads_properly(self):
-        """The register page loads properly"""
-        response = self.client.get('your_server_ip:8000/auth/register')
-        self.assertEqual(response.status_code, 404)
+    def test_create_superuser(self):
+        User = get_user_model()
+        admin_user = User.objects.create_superuser(
+        username='superadmin',
+        email='superadmin@email.com',
+        password='testpass123'
+        )
+        self.assertEqual(admin_user.username, 'superadmin')
+        self.assertEqual(admin_user.email, 'superadmin@email.com')
+        self.assertTrue(admin_user.is_active)
+        self.assertTrue(admin_user.is_staff)
+        self.assertTrue(admin_user.is_superuser)

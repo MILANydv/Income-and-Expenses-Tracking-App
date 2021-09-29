@@ -3,7 +3,7 @@
 <html lang="en">
 
     <head>
-        <title>Expen Ditcher | Index</title>
+        <title>Expen Ditcher  |  About</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="{% static 'img/apple-icon.png' %}">
@@ -15,6 +15,7 @@
         rel="stylesheet"
         href="{% static 'plugins/fontawesome/css/fontawesome.min.css' %}"
       />
+      <link rel="stylesheet" href="{% static 'css/boxicon.min.css' %}">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
         <!-- Load Tempalte CSS -->
         <link rel="stylesheet" href="{% static 'css/templatemo.css' %}">
@@ -46,7 +47,7 @@
                     </p>
                 </div>
                 <div class="col-lg-6">
-                    <img src="./assets/img/banner-img-02.svg">
+                    <img src="{% static 'img/banner-img-02.svg' %}">
                 </div>
             </div>
         </div>
@@ -68,21 +69,21 @@
 
             <div class="col-lg-9 row">
                 <div class="team-member col-md-4">
-                    <img class="team-member-img img-fluid rounded-circle p-4" src="./assets/img/team-01.jpg" alt="Card image">
+                    <img class="team-member-img img-fluid rounded-circle p-4" src="{% static 'img/team-01.jpg' %}" alt="Card image">
                     <ul class="team-member-caption list-unstyled text-center pt-4 text-muted light-300">
                         <li>John Doe</li>
                         <li>Business Development</li>
                     </ul>
                 </div>
                 <div class="team-member col-md-4">
-                    <img class="team-member-img img-fluid rounded-circle p-4" src="./assets/img/team-02.jpg" alt="Card image">
+                    <img class="team-member-img img-fluid rounded-circle p-4" src="{% static 'img/team-02.jpg' %}" alt="Card image">
                     <ul class="team-member-caption list-unstyled text-center pt-4 text-muted light-300">
                         <li>Jane Doe</li>
                         <li>Media Development</li>
                     </ul>
                 </div>
                 <div class="team-member col-md-4">
-                    <img class="team-member-img img-fluid rounded-circle p-4" src="./assets/img/team-03.jpg" alt="Card image">
+                    <img class="team-member-img img-fluid rounded-circle p-4" src="{% static 'img/team-03.jpg' %}" alt="Card image">
                     <ul class="team-member-caption list-unstyled text-center pt-4 text-muted light-300">
                         <li>Sam</li>
                         <li>Developer</li>
