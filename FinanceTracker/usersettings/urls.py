@@ -15,6 +15,6 @@ urlpatterns = [
     path('change_password/', PasswordChangeView.as_view(
         template_name='usersettings/change-password.html'), name='password_change'),
     
-    path('delete-account/', views.deleteAccount, name='delete-account'),
+    path('delete-account/)', views.delete_account, name='delete-account'),
 
 ]

@@ -15,6 +15,7 @@
         rel="stylesheet"
         href="{% static 'plugins/fontawesome/css/fontawesome.min.css' %}"
       />
+      <link rel="stylesheet" href="{% static 'css/boxicon.min.css' %}">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
         <!-- Load Tempalte CSS -->
         <link rel="stylesheet" href="{% static 'css/templatemo.css' %}">
@@ -70,7 +71,7 @@
         <div class="row projects gx-lg-5">
             <a href="work-single.html" class="col-sm-6 col-lg-4 text-decoration-none project marketing social business">
                 <div class="service-work overflow-hidden card mb-5 mx-5 m-sm-0">
-                    <img class="card-img-top" src="./assets/img/our-work-01.jpg" alt="...">
+                    <img class="card-img-top" src="{% static 'img/our-work-01.jpg' %}" alt="...">
                     <div class="card-body">
                         <h5 class="card-title light-300 text-dark">Digital Marketing</h5>
                         <p class="card-text light-300 text-dark">
@@ -85,7 +86,7 @@
             </a>
             <a href="work-single.html" class="col-sm-6 col-lg-4 text-decoration-none project graphic social">
                 <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5">
-                    <img class="card-img-top" src="./assets/img/our-work-02.jpg" alt="...">
+                    <img class="card-img-top" src="{% static 'img/our-work-02.jpg' %}" alt="...">
                     <div class="card-body">
                         <h5 class="card-title light-300 text-dark">Corporate Branding</h5>
                         <p class="card-text light-300 text-dark">
@@ -100,7 +101,7 @@
             </a>
             <a href="work-single.html" class="col-sm-6 col-lg-4 text-decoration-none project marketing graphic business">
                 <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5">
-                    <img class="card-img-top" src="./assets/img/our-work-03.jpg" alt="...">
+                    <img class="card-img-top" src="{% static 'img/our-work-03.jpg' %}" alt="...">
                     <div class="card-body">
                         <h5 class="card-title light-300 text-dark">Leading Digital Solution</h5>
                         <p class="card-text light-300 text-dark">
@@ -115,7 +116,7 @@
             </a>
             <a href="work-single.html" class="col-sm-6 col-lg-4 text-decoration-none project social business">
                 <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5">
-                    <img class="card-img-top" src="./assets/img/our-work-04.jpg" alt="...">
+                    <img class="card-img-top" src="{% static 'img/our-work-04.jpg' %}" alt="...">
                     <div class="card-body">
                         <h5 class="card-title light-300 text-dark">Smart Applications</h5>
                         <p class="card-text light-300 text-dark">
@@ -130,7 +131,7 @@
             </a>
             <a href="work-single.html" class="col-sm-6 col-lg-4 text-decoration-none project marketing">
                 <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5">
-                    <img class="card-img-top" src="./assets/img/our-work-05.jpg" alt="...">
+                    <img class="card-img-top" src="{% static 'img/our-work-05.jpg' %}" alt="...">
                     <div class="card-body">
                         <h5 class="card-title light-300 text-dark">Corporate Stationary</h5>
                         <p class="card-text light-300 text-dark">
@@ -145,7 +146,7 @@
             </a>
             <a href="work-single.html" class="col-sm-6 col-lg-4 text-decoration-none project marketing graphic">
                 <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5">
-                    <img class="card-img-top" src="./assets/img/our-work-06.jpg" alt="...">
+                    <img class="card-img-top" src="{% static 'img/our-work-06.jpg' %}" alt="...">
                     <div class="card-body">
                         <h5 class="card-title light-300 text-dark">8 Financial Tips</h5>
                         <p class="card-text light-300 text-dark">
@@ -195,19 +196,19 @@
                 </div>
                 <div class="col-lg-6 offset-lg-1 align-left">
                     <div class="row">
-                        <a class="col" data-type="image" data-fslightbox="gallery" href="./assets/img/feature-work-1-large.jpg">
-                            <img class="img-fluid" src="./assets/img/feature-work-1.jpg">
+                        <a class="col" data-type="image" data-fslightbox="gallery" href="{% static 'img/feature-work-1-large.jpg' %}">
+                            <img class="img-fluid" src="{% static 'img/feature-work-1.jpg' %}">
                         </a>
-                        <a class="col" data-type="image" data-fslightbox="gallery" href="./assets/img/feature-work-2-large.jpg">
-                            <img class="img-fluid" src="./assets/img/feature-work-2.jpg">
+                        <a class="col" data-type="image" data-fslightbox="gallery" href="{% static 'img/feature-work-2-large.jpg' %}">
+                            <img class="img-fluid" src="{% static 'img/feature-work-2.jpg' %}">
                         </a>
                     </div>
                     <div class="row pt-4">
-                        <a class="col" data-type="image" data-fslightbox="gallery" href="./assets/img/feature-work-3-large.jpg">
-                            <img class="img-fluid" src="./assets/img/feature-work-3.jpg">
+                        <a class="col" data-type="image" data-fslightbox="gallery" href="{% static 'img/feature-work-3-large.jpg' %}">
+                            <img class="img-fluid" src="{% static 'img/feature-work-3.jpg' %}">
                         </a>
                         <a class="col" data-type="image" data-fslightbox="gallery" href="./assets/img/feature-work-4-large.jpg">
-                            <img class="img-fluid" src="./assets/img/feature-work-4.jpg">
+                            <img class="img-fluid" src="{% static 'img/feature-work-4.jpg' %}">
                         </a>
                     </div>
                 </div>
@@ -222,17 +223,15 @@
     <!-- End Footer -->
 
 
-    <!-- Bootstrap -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <!-- Lightbox -->
-    <script src="assets/js/fslightbox.js"></script>
+    
     <script>
         fsLightboxInstances['gallery'].props.loadOnlyCurrentSource = true;
     </script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
     <!-- Load jQuery require for isotope -->
-    <script src="assets/js/jquery.min.js"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
     <!-- Isotope -->
-    <script src="assets/js/isotope.pkgd.js"></script>
+    <script src="{% static 'js/isotope.pkgd.js' %}"></script>
     <!-- Page Script -->
     <script>
         $(window).load(function() {
@@ -255,9 +254,9 @@
         });
     </script>
     <!-- Templatemo -->
-    <script src="assets/js/templatemo.js"></script>
+    <script src="{% static 'js/templatemo.js' %}"></script>
     <!-- Custom -->
-    <script src="assets/js/custom.js"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
 
 </body>
 

@@ -3,7 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 from .views import index, addExpense, editExpense, deleteExpense, searchExpense, expenseCategorySummary, expenseSummary, expense,activities
-#  exportExpenseCsv, exportExpenseExcel, exportExpensePdf
+
 
 urlpatterns = [
     path('', index, name='home'),

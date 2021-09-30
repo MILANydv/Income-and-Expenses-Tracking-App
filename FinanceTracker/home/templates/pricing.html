@@ -15,6 +15,7 @@
         rel="stylesheet"
         href="{% static 'plugins/fontawesome/css/fontawesome.min.css' %}"
       />
+      <link rel="stylesheet" href="{% static 'css/boxicon.min.css' %}">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
         <!-- Load Tempalte CSS -->
         <link rel="stylesheet" href="{% static 'css/templatemo.css' %}">
@@ -207,7 +208,7 @@
         <div class="row d-flex align-items-center pb-5">
 
             <div class="col-lg-6 offset-lg-0 col-md-8 offset-md-2">
-                <img class="rounded float-right" src="./assets/img/pricing.svg">
+                <img class="rounded float-right" src="{% static 'img/pricing.svg' %}">
             </div>
 
             <div class="col-lg-6">
@@ -282,11 +283,16 @@
 
 
     <!-- Bootstrap -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <!-- Templatemo -->
-    <script src="assets/js/templatemo.js"></script>
+    
+ 
+    
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+   
+   
+   
+    <script src="{% static 'js/templatemo.js' %}"></script>
     <!-- Custom -->
-    <script src="assets/js/custom.js"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
 
 </body>
 

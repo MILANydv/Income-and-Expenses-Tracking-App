@@ -1,5 +1,3 @@
-
-
 $(document).ready(function() {
 const renderChart = (data, labels) => {
   let ctx = document.getElementById("expenseChart").getContext("2d");

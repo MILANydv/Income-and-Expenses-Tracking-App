@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db.models.fields.related import ForeignKey
 from django.shortcuts import render, redirect, get_object_or_404
 import os
@@ -5,6 +6,8 @@ import json
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+
+from .forms import UserDeleteForm
 # Create your views here.
 from .models import Profile, userSetting
 from expenses.models import Category
@@ -12,7 +15,6 @@ from expenses.models import Category
 
 @login_required(login_url='/auth/login/')
 def profileSettings(request, profile_id):
-    
     profile = get_object_or_404(Profile, pk = profile_id)
     context = {'profile': profile, 'values': profile}
     if request.method == 'POST':
@@ -49,11 +51,6 @@ def profileSettings(request, profile_id):
         'activate_settings': 'active'}
      
         messages.success(request, 'Your Profile was updated successfully', context)
-    
-    
-
-        
-    
     return render(request, 'usersettings/settings.html')
 
 
@@ -137,8 +134,22 @@ def deleteCategory(request, item_id):
     return redirect('category-setting')
 
 
-@login_required(login_url='/auth/login/')
-def deleteAccount(request):
 
-    context = {}
+
+@login_required(login_url='/auth/login/')
+def delete_account(request):
+    if request.method == 'POST':
+        delete_form = UserDeleteForm(request.POST, instance=request.user)
+        user = request.user
+        user.delete()
+        messages.success(request, 'Your account has been deleted.')
+        return redirect('register')
+    else:
+        delete_form = UserDeleteForm(instance=request.user)
+
+    context = {
+        'delete_form': delete_form,
+        'activate_delete':'active'
+    }  
+
     return render(request, 'usersettings/delete-account.html', context)
