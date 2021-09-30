@@ -16,7 +16,7 @@ class Profile(models.Model):
     address1 = models.CharField(max_length=50)
     address2 = models.CharField(max_length=50)
     zip =models.CharField(max_length=50)
-    profile_pic = models.ImageField(upload_to='static/profile', blank = True)
+    profile_pic = models.ImageField(upload_to='static/profile', default='static/img/profiles/avatar-07.jpg', null=True)
     created_date = models.DateTimeField(auto_now_add=True)
 
     
