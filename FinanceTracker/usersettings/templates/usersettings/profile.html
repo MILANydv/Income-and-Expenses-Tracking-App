@@ -46,7 +46,7 @@
 
 							<div class="text-center mb-5">
 								<label class="avatar avatar-xxl profile-cover-avatar" for="avatar_upload">
-									<img class="avatar-img" src="{{user.profile.profile_pic.url}}" alt="Profile Image">
+									<img class="avatar-img" src="/{{request.user.profile.profile_pic}}" alt="Profile Image">
 									<input type="file" id="avatar_upload">
 									<span class="avatar-edit">
 										<i data-feather="edit-2" class="avatar-uploader-icon shadow-soft"></i>
@@ -55,7 +55,7 @@
 								<h2>{{user.profile.name}} <i class="fas fa-certificate text-primary small" data-toggle="tooltip" data-placement="top" title="" data-original-title="Verified"></i></h2>
 								<ul class="list-inline">
 									<li class="list-inline-item">
-										<i class="far fa-building"></i> <span>Hafner Pvt Ltd.</span>
+										<i class="far fa-building"></i> <span>Softwarica College </span>
 									</li>
 									<li class="list-inline-item">
 										<i class="fas fa-map-marker-alt"></i> {{user.profile.city}} {{user.profile.country}}
@@ -103,7 +103,7 @@
 													<small class="text-dark">Contacts</small>
 												</li>
 												<li>
-													{{user.profile.email}}
+													{{user.email}}
 												</li>
 												<li>
 													{{user.profile.phone}}

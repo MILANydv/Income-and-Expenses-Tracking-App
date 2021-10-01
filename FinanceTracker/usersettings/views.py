@@ -20,7 +20,6 @@ def profileSettings(request, profile_id):
     if request.method == 'POST':
         # user= request.POST.get('user')
         name= request.POST.get('name')
-        email= request.POST.get('email')
         phone= request.POST.get('phone')
         country= request.POST.get('country')
         city= request.POST.get('city')
@@ -33,7 +32,6 @@ def profileSettings(request, profile_id):
         Profile.objects.update(
             user = request.user,
             name=name,
-            email = email,
             phone = phone,
             country = country,
             city = city,

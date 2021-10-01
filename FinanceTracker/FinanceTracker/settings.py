@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'FinanceTracker.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Financial Tracker',
+        'NAME': 'Financial Tracker909',
         'USER': 'postgres',
         'PASSWORD': 'nmjkio90,l.',
         'HOST': '127.0.0.1',

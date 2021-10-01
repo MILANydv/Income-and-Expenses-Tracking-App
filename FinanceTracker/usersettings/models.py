@@ -8,7 +8,6 @@ class Profile(models.Model):
     
     user = models.OneToOneField(to =User, on_delete=models.CASCADE)
     name =  models.CharField(max_length=100)
-    email = models.EmailField()
     phone = models.CharField(max_length=10)
     country = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
@@ -17,7 +16,7 @@ class Profile(models.Model):
     address2 = models.CharField(max_length=50)
     zip =models.CharField(max_length=50)
     profile_pic = models.ImageField(upload_to='static/profile', default='static/img/profiles/avatar-07.jpg', null=True)
-    created_date = models.DateTimeField(auto_now_add=True)
+    created_date = models.DateTimeField(auto_now_add=True,null=True)
 
     
     def create_user_profile(sender, instance, created, **kwargs):

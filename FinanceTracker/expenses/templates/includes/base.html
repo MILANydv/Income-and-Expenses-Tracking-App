@@ -71,7 +71,7 @@
 					<li class="nav-item dropdown has-arrow main-drop">
 						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
 							<span class="user-img">
-								<img class="avatar-img" src="{{user.profile.profile_pic.url}}" alt="Profile Image">
+								<img class="avatar-img" src="/{{request.user.profile.profile_pic}}" alt="Profile Image">
 								<span class="status online"></span>
 							</span>
 							<span>Welcome, {{request.user}} </span>
